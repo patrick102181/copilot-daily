@@ -1,0 +1,807 @@
+{
+ "generated": 1794301099762,
+ "start": 1577836800000,
+ "split": 1688169600000,
+ "cost_pct": 0.2,
+ "errors": [],
+ "results": {
+  "S0 現行版": {
+   "n": 2213,
+   "open": 0,
+   "win_rate": 43.6,
+   "avg_r": -0.005,
+   "total_r": -10.14,
+   "avg_win_r": 1.23,
+   "avg_loss_r": -0.957,
+   "profit_factor": 0.99,
+   "max_dd_r": 96.42,
+   "avg_hold_bars": 15.5,
+   "by_setup": {
+    "回踩": {
+     "n": 1797,
+     "win_rate": 42.5,
+     "avg_r": -0.049
+    },
+    "突破": {
+     "n": 416,
+     "win_rate": 48.3,
+     "avg_r": 0.187
+    }
+   },
+   "by_side": {
+    "short": {
+     "n": 1140,
+     "win_rate": 43.4,
+     "avg_r": -0.03
+    },
+    "long": {
+     "n": 1073,
+     "win_rate": 43.7,
+     "avg_r": 0.022
+    }
+   },
+   "reliable": true,
+   "前段": {
+    "n": 935,
+    "win_rate": 42.5,
+    "avg_r": -0.012,
+    "total_r": -10.82,
+    "profit_factor": 0.98,
+    "max_dd_r": 76.1
+   },
+   "後段": {
+    "n": 1278,
+    "win_rate": 44.4,
+    "avg_r": 0.001,
+    "total_r": 0.68,
+    "profit_factor": 1.0,
+    "max_dd_r": 42.56
+   },
+   "各年": {
+    "2020": {
+     "n": 256,
+     "total_r": 2.22
+    },
+    "2021": {
+     "n": 230,
+     "total_r": 32.59
+    },
+    "2022": {
+     "n": 283,
+     "total_r": -8.15
+    },
+    "2023": {
+     "n": 376,
+     "total_r": -44.33
+    },
+    "2024": {
+     "n": 359,
+     "total_r": 14.8
+    },
+    "2025": {
+     "n": 391,
+     "total_r": 2.99
+    },
+    "2026": {
+     "n": 318,
+     "total_r": -10.26
+    }
+   },
+   "年度賺錢比例": "4/7",
+   "報酬回撤比": -0.11,
+   "最大單筆": 1.975,
+   "前10%獲利占比": 36.6,
+   "各幣": {
+    "BTCUSDT": {
+     "n": 360,
+     "win_rate": 45.0,
+     "avg_r": -0.012,
+     "total_r": -4.17,
+     "max_dd_r": 22.0
+    },
+    "ETHUSDT": {
+     "n": 379,
+     "win_rate": 43.0,
+     "avg_r": -0.01,
+     "total_r": -3.73,
+     "max_dd_r": 30.53
+    },
+    "SOLUSDT": {
+     "n": 271,
+     "win_rate": 46.5,
+     "avg_r": 0.112,
+     "total_r": 30.34,
+     "max_dd_r": 11.29
+    },
+    "BNBUSDT": {
+     "n": 339,
+     "win_rate": 46.3,
+     "avg_r": 0.013,
+     "total_r": 4.54,
+     "max_dd_r": 21.07
+    },
+    "XRPUSDT": {
+     "n": 343,
+     "win_rate": 40.8,
+     "avg_r": -0.07,
+     "total_r": -23.85,
+     "max_dd_r": 39.57
+    },
+    "DOGEUSDT": {
+     "n": 335,
+     "win_rate": 40.3,
+     "avg_r": -0.06,
+     "total_r": -19.99,
+     "max_dd_r": 31.01
+    },
+    "ARBUSDT": {
+     "n": 186,
+     "win_rate": 43.5,
+     "avg_r": 0.036,
+     "total_r": 6.73,
+     "max_dd_r": 7.86
+    }
+   }
+  },
+  "S1 只做突破": {
+   "n": 997,
+   "open": 0,
+   "win_rate": 46.9,
+   "avg_r": 0.139,
+   "total_r": 138.53,
+   "avg_win_r": 1.485,
+   "avg_loss_r": -1.052,
+   "profit_factor": 1.25,
+   "max_dd_r": 33.58,
+   "avg_hold_bars": 8.8,
+   "by_setup": {
+    "突破": {
+     "n": 997,
+     "win_rate": 46.9,
+     "avg_r": 0.139
+    }
+   },
+   "by_side": {
+    "short": {
+     "n": 465,
+     "win_rate": 48.4,
+     "avg_r": 0.165
+    },
+    "long": {
+     "n": 532,
+     "win_rate": 45.7,
+     "avg_r": 0.116
+    }
+   },
+   "reliable": true,
+   "前段": {
+    "n": 401,
+    "win_rate": 48.6,
+    "avg_r": 0.191,
+    "total_r": 76.5,
+    "profit_factor": 1.36,
+    "max_dd_r": 26.88
+   },
+   "後段": {
+    "n": 596,
+    "win_rate": 45.8,
+    "avg_r": 0.104,
+    "total_r": 62.03,
+    "profit_factor": 1.18,
+    "max_dd_r": 33.47
+   },
+   "各年": {
+    "2020": {
+     "n": 121,
+     "total_r": 28.36
+    },
+    "2021": {
+     "n": 114,
+     "total_r": 27.01
+    },
+    "2022": {
+     "n": 103,
+     "total_r": 33.02
+    },
+    "2023": {
+     "n": 159,
+     "total_r": -0.26
+    },
+    "2024": {
+     "n": 176,
+     "total_r": 28.69
+    },
+    "2025": {
+     "n": 185,
+     "total_r": 37.13
+    },
+    "2026": {
+     "n": 139,
+     "total_r": -15.41
+    }
+   },
+   "年度賺錢比例": "5/7",
+   "報酬回撤比": 4.13,
+   "最大單筆": 1.975,
+   "前10%獲利占比": 27.9,
+   "各幣": {
+    "BTCUSDT": {
+     "n": 157,
+     "win_rate": 46.5,
+     "avg_r": 0.074,
+     "total_r": 11.57,
+     "max_dd_r": 11.71
+    },
+    "ETHUSDT": {
+     "n": 179,
+     "win_rate": 48.6,
+     "avg_r": 0.167,
+     "total_r": 29.92,
+     "max_dd_r": 13.0
+    },
+    "SOLUSDT": {
+     "n": 134,
+     "win_rate": 51.5,
+     "avg_r": 0.29,
+     "total_r": 38.87,
+     "max_dd_r": 10.05
+    },
+    "BNBUSDT": {
+     "n": 160,
+     "win_rate": 48.8,
+     "avg_r": 0.119,
+     "total_r": 18.98,
+     "max_dd_r": 8.07
+    },
+    "XRPUSDT": {
+     "n": 139,
+     "win_rate": 43.2,
+     "avg_r": 0.037,
+     "total_r": 5.15,
+     "max_dd_r": 12.33
+    },
+    "DOGEUSDT": {
+     "n": 140,
+     "win_rate": 41.4,
+     "avg_r": 0.086,
+     "total_r": 11.97,
+     "max_dd_r": 11.52
+    },
+    "ARBUSDT": {
+     "n": 88,
+     "win_rate": 48.9,
+     "avg_r": 0.251,
+     "total_r": 22.06,
+     "max_dd_r": 5.95
+    }
+   }
+  },
+  "S2 4H趨勢跟隨": {
+   "n": 1395,
+   "open": 0,
+   "win_rate": 36.4,
+   "avg_r": 0.226,
+   "total_r": 315.07,
+   "avg_win_r": 1.944,
+   "avg_loss_r": -0.758,
+   "profit_factor": 1.47,
+   "max_dd_r": 51.84,
+   "avg_hold_bars": 15.8,
+   "by_setup": {
+    "4H趨勢": {
+     "n": 1395,
+     "win_rate": 36.4,
+     "avg_r": 0.226
+    }
+   },
+   "by_side": {
+    "short": {
+     "n": 678,
+     "win_rate": 35.8,
+     "avg_r": 0.107
+    },
+    "long": {
+     "n": 717,
+     "win_rate": 37.0,
+     "avg_r": 0.338
+    }
+   },
+   "reliable": true,
+   "前段": {
+    "n": 642,
+    "win_rate": 38.6,
+    "avg_r": 0.256,
+    "total_r": 164.53,
+    "profit_factor": 1.57,
+    "max_dd_r": 42.62
+   },
+   "後段": {
+    "n": 753,
+    "win_rate": 34.5,
+    "avg_r": 0.2,
+    "total_r": 150.54,
+    "profit_factor": 1.39,
+    "max_dd_r": 51.84
+   },
+   "各年": {
+    "2020": {
+     "n": 149,
+     "total_r": 97.78
+    },
+    "2021": {
+     "n": 224,
+     "total_r": 63.1
+    },
+    "2022": {
+     "n": 185,
+     "total_r": 23.93
+    },
+    "2023": {
+     "n": 191,
+     "total_r": 20.79
+    },
+    "2024": {
+     "n": 223,
+     "total_r": 50.98
+    },
+    "2025": {
+     "n": 238,
+     "total_r": 50.64
+    },
+    "2026": {
+     "n": 185,
+     "total_r": 7.85
+    }
+   },
+   "年度賺錢比例": "7/7",
+   "報酬回撤比": 6.08,
+   "最大單筆": 27.19,
+   "前10%獲利占比": 69.2,
+   "各幣": {
+    "BTCUSDT": {
+     "n": 213,
+     "win_rate": 35.2,
+     "avg_r": 0.195,
+     "total_r": 41.62,
+     "max_dd_r": 11.5
+    },
+    "ETHUSDT": {
+     "n": 233,
+     "win_rate": 33.9,
+     "avg_r": 0.371,
+     "total_r": 86.42,
+     "max_dd_r": 14.05
+    },
+    "SOLUSDT": {
+     "n": 194,
+     "win_rate": 36.6,
+     "avg_r": 0.202,
+     "total_r": 39.27,
+     "max_dd_r": 13.94
+    },
+    "BNBUSDT": {
+     "n": 224,
+     "win_rate": 37.9,
+     "avg_r": 0.321,
+     "total_r": 71.95,
+     "max_dd_r": 12.72
+    },
+    "XRPUSDT": {
+     "n": 211,
+     "win_rate": 32.7,
+     "avg_r": 0.001,
+     "total_r": 0.28,
+     "max_dd_r": 20.91
+    },
+    "DOGEUSDT": {
+     "n": 208,
+     "win_rate": 38.9,
+     "avg_r": 0.184,
+     "total_r": 38.35,
+     "max_dd_r": 14.09
+    },
+    "ARBUSDT": {
+     "n": 112,
+     "win_rate": 42.9,
+     "avg_r": 0.332,
+     "total_r": 37.19,
+     "max_dd_r": 5.29
+    }
+   }
+  },
+  "S3 4H趨勢＋BTC濾網": {
+   "n": 1139,
+   "open": 0,
+   "win_rate": 35.6,
+   "avg_r": 0.194,
+   "total_r": 220.47,
+   "avg_win_r": 1.92,
+   "avg_loss_r": -0.763,
+   "profit_factor": 1.39,
+   "max_dd_r": 52.29,
+   "avg_hold_bars": 15.3,
+   "by_setup": {
+    "4H趨勢": {
+     "n": 1139,
+     "win_rate": 35.6,
+     "avg_r": 0.194
+    }
+   },
+   "by_side": {
+    "short": {
+     "n": 504,
+     "win_rate": 34.5,
+     "avg_r": 0.054
+    },
+    "long": {
+     "n": 635,
+     "win_rate": 36.5,
+     "avg_r": 0.304
+    }
+   },
+   "reliable": true,
+   "前段": {
+    "n": 546,
+    "win_rate": 38.1,
+    "avg_r": 0.257,
+    "total_r": 140.35,
+    "profit_factor": 1.57,
+    "max_dd_r": 44.01
+   },
+   "後段": {
+    "n": 593,
+    "win_rate": 33.4,
+    "avg_r": 0.135,
+    "total_r": 80.12,
+    "profit_factor": 1.26,
+    "max_dd_r": 52.29
+   },
+   "各年": {
+    "2020": {
+     "n": 122,
+     "total_r": 71.86
+    },
+    "2021": {
+     "n": 196,
+     "total_r": 66.2
+    },
+    "2022": {
+     "n": 162,
+     "total_r": 19.23
+    },
+    "2023": {
+     "n": 150,
+     "total_r": 10.27
+    },
+    "2024": {
+     "n": 163,
+     "total_r": 50.47
+    },
+    "2025": {
+     "n": 186,
+     "total_r": 17.71
+    },
+    "2026": {
+     "n": 160,
+     "total_r": -15.25
+    }
+   },
+   "年度賺錢比例": "6/7",
+   "報酬回撤比": 4.22,
+   "最大單筆": 17.278,
+   "前10%獲利占比": 68.3,
+   "各幣": {
+    "BTCUSDT": {
+     "n": 213,
+     "win_rate": 35.2,
+     "avg_r": 0.195,
+     "total_r": 41.62,
+     "max_dd_r": 11.5
+    },
+    "ETHUSDT": {
+     "n": 196,
+     "win_rate": 32.7,
+     "avg_r": 0.204,
+     "total_r": 40.03,
+     "max_dd_r": 15.53
+    },
+    "SOLUSDT": {
+     "n": 157,
+     "win_rate": 35.0,
+     "avg_r": 0.241,
+     "total_r": 37.82,
+     "max_dd_r": 11.66
+    },
+    "BNBUSDT": {
+     "n": 177,
+     "win_rate": 37.3,
+     "avg_r": 0.295,
+     "total_r": 52.18,
+     "max_dd_r": 12.28
+    },
+    "XRPUSDT": {
+     "n": 155,
+     "win_rate": 36.1,
+     "avg_r": 0.055,
+     "total_r": 8.51,
+     "max_dd_r": 14.66
+    },
+    "DOGEUSDT": {
+     "n": 164,
+     "win_rate": 36.6,
+     "avg_r": 0.131,
+     "total_r": 21.47,
+     "max_dd_r": 15.86
+    },
+    "ARBUSDT": {
+     "n": 77,
+     "win_rate": 39.0,
+     "avg_r": 0.245,
+     "total_r": 18.83,
+     "max_dd_r": 5.38
+    }
+   }
+  },
+  "S4 日線海龜": {
+   "n": 241,
+   "open": 0,
+   "win_rate": 35.3,
+   "avg_r": 2.292,
+   "total_r": 552.38,
+   "avg_win_r": 8.146,
+   "avg_loss_r": -0.898,
+   "profit_factor": 4.94,
+   "max_dd_r": 44.57,
+   "avg_hold_bars": 35.9,
+   "by_setup": {
+    "日線海龜": {
+     "n": 241,
+     "win_rate": 35.3,
+     "avg_r": 2.292
+    }
+   },
+   "by_side": {
+    "long": {
+     "n": 144,
+     "win_rate": 31.2,
+     "avg_r": 3.838
+    },
+    "short": {
+     "n": 97,
+     "win_rate": 41.2,
+     "avg_r": -0.003
+    }
+   },
+   "reliable": true,
+   "前段": {
+    "n": 111,
+    "win_rate": 34.2,
+    "avg_r": 4.055,
+    "total_r": 450.14,
+    "profit_factor": 7.69,
+    "max_dd_r": 26.78
+   },
+   "後段": {
+    "n": 130,
+    "win_rate": 36.2,
+    "avg_r": 0.787,
+    "total_r": 102.25,
+    "profit_factor": 2.41,
+    "max_dd_r": 18.0
+   },
+   "各年": {
+    "2020": {
+     "n": 29,
+     "total_r": -4.42
+    },
+    "2021": {
+     "n": 23,
+     "total_r": 465.93
+    },
+    "2022": {
+     "n": 33,
+     "total_r": 1.02
+    },
+    "2023": {
+     "n": 49,
+     "total_r": -29.16
+    },
+    "2024": {
+     "n": 36,
+     "total_r": 82.96
+    },
+    "2025": {
+     "n": 33,
+     "total_r": 19.57
+    },
+    "2026": {
+     "n": 38,
+     "total_r": 16.48
+    }
+   },
+   "年度賺錢比例": "5/7",
+   "報酬回撤比": 12.39,
+   "最大單筆": 209.988,
+   "前10%獲利占比": 90.6,
+   "各幣": {
+    "BTCUSDT": {
+     "n": 39,
+     "win_rate": 41.0,
+     "avg_r": 1.243,
+     "total_r": 48.47,
+     "max_dd_r": 6.34
+    },
+    "ETHUSDT": {
+     "n": 33,
+     "win_rate": 39.4,
+     "avg_r": 2.061,
+     "total_r": 68.03,
+     "max_dd_r": 5.09
+    },
+    "SOLUSDT": {
+     "n": 33,
+     "win_rate": 39.4,
+     "avg_r": 2.506,
+     "total_r": 82.69,
+     "max_dd_r": 6.11
+    },
+    "BNBUSDT": {
+     "n": 34,
+     "win_rate": 32.4,
+     "avg_r": 4.141,
+     "total_r": 140.78,
+     "max_dd_r": 7.16
+    },
+    "XRPUSDT": {
+     "n": 37,
+     "win_rate": 35.1,
+     "avg_r": 0.098,
+     "total_r": 3.61,
+     "max_dd_r": 14.17
+    },
+    "DOGEUSDT": {
+     "n": 43,
+     "win_rate": 23.3,
+     "avg_r": 4.798,
+     "total_r": 206.3,
+     "max_dd_r": 14.49
+    },
+    "ARBUSDT": {
+     "n": 22,
+     "win_rate": 40.9,
+     "avg_r": 0.114,
+     "total_r": 2.5,
+     "max_dd_r": 4.88
+    }
+   }
+  },
+  "S5 日線海龜只做多": {
+   "n": 141,
+   "open": 0,
+   "win_rate": 33.3,
+   "avg_r": 3.979,
+   "total_r": 561.02,
+   "avg_win_r": 13.763,
+   "avg_loss_r": -0.913,
+   "profit_factor": 7.54,
+   "max_dd_r": 22.75,
+   "avg_hold_bars": 36.0,
+   "by_setup": {
+    "日線海龜": {
+     "n": 141,
+     "win_rate": 33.3,
+     "avg_r": 3.979
+    }
+   },
+   "by_side": {
+    "long": {
+     "n": 141,
+     "win_rate": 33.3,
+     "avg_r": 3.979
+    }
+   },
+   "reliable": true,
+   "前段": {
+    "n": 65,
+    "win_rate": 32.3,
+    "avg_r": 6.956,
+    "total_r": 452.15,
+    "profit_factor": 12.2,
+    "max_dd_r": 14.6
+   },
+   "後段": {
+    "n": 76,
+    "win_rate": 34.2,
+    "avg_r": 1.433,
+    "total_r": 108.87,
+    "profit_factor": 3.4,
+    "max_dd_r": 9.21
+   },
+   "各年": {
+    "2020": {
+     "n": 22,
+     "total_r": -1.85
+    },
+    "2021": {
+     "n": 17,
+     "total_r": 468.6
+    },
+    "2022": {
+     "n": 13,
+     "total_r": -11.81
+    },
+    "2023": {
+     "n": 23,
+     "total_r": -10.94
+    },
+    "2024": {
+     "n": 26,
+     "total_r": 92.92
+    },
+    "2025": {
+     "n": 22,
+     "total_r": 23.23
+    },
+    "2026": {
+     "n": 18,
+     "total_r": 0.87
+    }
+   },
+   "年度賺錢比例": "4/7",
+   "報酬回撤比": 24.66,
+   "最大單筆": 209.988,
+   "前10%獲利占比": 91.4,
+   "各幣": {
+    "BTCUSDT": {
+     "n": 23,
+     "win_rate": 39.1,
+     "avg_r": 2.151,
+     "total_r": 49.47,
+     "max_dd_r": 3.25
+    },
+    "ETHUSDT": {
+     "n": 20,
+     "win_rate": 45.0,
+     "avg_r": 3.327,
+     "total_r": 66.54,
+     "max_dd_r": 2.42
+    },
+    "SOLUSDT": {
+     "n": 17,
+     "win_rate": 41.2,
+     "avg_r": 4.933,
+     "total_r": 83.85,
+     "max_dd_r": 4.44
+    },
+    "BNBUSDT": {
+     "n": 21,
+     "win_rate": 28.6,
+     "avg_r": 6.737,
+     "total_r": 141.48,
+     "max_dd_r": 5.32
+    },
+    "XRPUSDT": {
+     "n": 23,
+     "win_rate": 34.8,
+     "avg_r": 0.238,
+     "total_r": 5.47,
+     "max_dd_r": 10.77
+    },
+    "DOGEUSDT": {
+     "n": 25,
+     "win_rate": 20.0,
+     "avg_r": 8.673,
+     "total_r": 216.83,
+     "max_dd_r": 6.67
+    },
+    "ARBUSDT": {
+     "n": 12,
+     "win_rate": 25.0,
+     "avg_r": -0.219,
+     "total_r": -2.62,
+     "max_dd_r": 6.95
+    }
+   }
+  }
+ }
+}
