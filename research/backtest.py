@@ -4,14 +4,14 @@
 - 用的是 scripts/engine.py，跟每 4 小時排程完全同一份程式，沒有另外調參數
 - 每一根 4H 只用「當時已經收盤」的日線和 4H 資料判斷，不偷看未來
 - 同一個幣同時只會有一筆單；結束後冷卻 cooldown_bars 根才能再出手（跟實盤一樣）
-- 已扣手續費（config 的 fee_pct_round_trip）
-- 沒算滑價、資金費率、爆倉，實際成績通常會比回測差一點
+- 已扣手續費加滑價（config 的 fee_pct_round_trip，預設 0.2%）
+- 沒算資金費率、爆倉；資料是現貨，跟合約價格有小差距
 
 結果寫到 data/backtest.json，網站成績單會把「回測」和「實盤」並排比較。
 實盤明顯比回測差 → 規則可能只是剛好適合過去，或是執行上有落差。
 
-執行：python research/backtest.py            （預設每個幣回測約 1500 根 4H ≈ 250 天）
-      python research/backtest.py --bars 3000
+執行：python research/backtest.py            （預設每個幣回測 15000 根 4H ≈ 7 年，資料不夠的幣就從上市開始）
+      python research/backtest.py --bars 3000   （只看最近約 500 天）
 """
 import argparse
 import json
@@ -31,13 +31,13 @@ def run_symbol(sym, h4, d1, cfg):
     ind = engine.prepare_4h(h4, cfg)
     trades, next_ok = [], 0
     for i in range(len(h4)):
-        if h4[i]["ct"] < next_ok:
+        if h4[i]["ct"] <= next_ok:  # 出場那根不立刻再進（跟實盤一樣）
             continue
         bias = engine.bias_at(h4[i]["ct"], biases)
         sig = engine.check_setup(sym, i, h4, ind, bias, cfg)
         if not sig:
             continue
-        engine.settle(sig, h4, cfg)
+        engine.settle(sig, h4, cfg, ind["atr"])
         trades.append(sig)
         if sig["status"] != "closed":
             break  # 最後一筆還沒結束，後面也不會再有新單
@@ -47,7 +47,7 @@ def run_symbol(sym, h4, d1, cfg):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--bars", type=int, default=1500, help="每個幣回測幾根 4H")
+    ap.add_argument("--bars", type=int, default=15000, help="每個幣回測幾根 4H（15000 ≈ 7 年）")
     args = ap.parse_args()
     with open(os.path.join(ROOT, "config.json"), encoding="utf-8") as f:
         cfg = json.load(f)
@@ -70,13 +70,19 @@ def main():
         print(f"{sym}: {per_symbol[sym].get('n', 0)} 筆，勝率 {per_symbol[sym].get('win_rate', '-')}%，"
               f"平均 {per_symbol[sym].get('avg_r', '-')}R")
     st = engine.stats(all_trades)
-    keep = ["symbol", "side", "setup", "time", "entry", "sl", "tp1", "tp2", "result", "r", "closed_time", "bars_held"]
+    keep = ["symbol", "side", "setup", "time", "entry", "sl", "exit_price", "result", "r", "closed_time", "bars_held"]
     closed = [t for t in all_trades if t["status"] == "closed"]
     closed.sort(key=lambda t: t["closed_time"])
+    years = {}
+    for t in closed:
+        y = time.gmtime(t["closed_time"] / 1000).tm_year
+        years.setdefault(str(y), []).append(t["r"])
     out = {
+        "years": {y: {"n": len(v), "total_r": round(sum(v), 2),
+                      "win_rate": round(sum(1 for x in v if x > 0) / len(v) * 100, 1)} for y, v in sorted(years.items())},
         "generated": now, "period": [first, last], "bars": args.bars,
         "stats": st, "per_symbol": per_symbol, "errors": errors,
-        "rules": cfg["rules"], "fee_pct_round_trip": cfg.get("fee_pct_round_trip", 0.1),
+        "rules": cfg["rules"], "fee_pct_round_trip": cfg.get("fee_pct_round_trip", 0.2),
         "recent_trades": [{k: t.get(k) for k in keep} for t in closed[-150:]],
     }
     os.makedirs(os.path.join(ROOT, "data"), exist_ok=True)  # 第一次跑時 data 資料夾還不存在

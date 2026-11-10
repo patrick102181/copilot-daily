@@ -10,10 +10,10 @@
 - 成本：手續費＋滑價，一進一出合計 0.2%（比實盤保守）
 - 停損遇到跳空：用開盤價和停損價較差的那個成交
 
-策略：
-  S0 現行版         日線方向＋4H 回踩/突破，止盈 1.5R/2.5R，5 天到期
-  S1 只做突破       同上，只留突破
-  S2 4H 趨勢跟隨    日線方向＋4H 收盤突破 20 根高/低點；停損 2 ATR，之後用 3 ATR 移動停損，不設止盈、不設到期
+策略（2026-11-10 第一次跑的結果，含已淘汰的 S0 舊版、S1 只做突破，見 git 紀錄裡當天的 data/lab.json）：
+  S0 舊版（已淘汰）  日線方向＋4H 回踩/突破，止盈 1.5R/2.5R，5 天到期 → 7 年 2213 筆平均 −0.005R
+  S1 只做突破（淘汰） 同上只留突破 → +0.139R，但後段變弱、2026 年虧
+  S2 4H 趨勢跟隨    ← 現在實盤用的規則（scripts/engine.py）。日線方向＋4H 收盤突破 20 根高/低點；停損 2 ATR，之後用 3 ATR 移動停損，不設止盈、不設到期
   S3 S2＋BTC 濾網   其他幣只做和 BTC 日線方向相同的單
   S4 日線海龜       日線收盤突破 50 日高/低點進場；停損 2 ATR；收盤跌破 20 日低點（空單是漲破高點）出場
   S5 日線海龜只做多  同 S4，只做多
@@ -80,28 +80,6 @@ def simulate(sym, bars, entry_fn, trail_fn, exit_fn, init_stop_atr, atr_list, la
 
 
 # ---------- 各策略 ----------
-def s0_s1(sym, h4, d1, cfg, only_breakout):
-    """現行引擎，成本改成跟其他策略一樣。"""
-    c = json.loads(json.dumps(cfg))
-    c["fee_pct_round_trip"] = COST_PCT
-    r = c["rules"]
-    biases = engine.daily_bias(d1, c)
-    ind = engine.prepare_4h(h4, c)
-    out, next_ok = [], 0
-    for i in range(len(h4)):
-        if h4[i]["ct"] < max(next_ok, START):
-            continue
-        sig = engine.check_setup(sym, i, h4, ind, engine.bias_at(h4[i]["ct"], biases), c)
-        if not sig or (only_breakout and sig["setup"] != "突破"):
-            continue
-        engine.settle(sig, h4, c)
-        if sig["status"] != "closed":
-            break
-        out.append(sig)
-        next_ok = sig["closed_time"] + r["cooldown_bars"] * engine.H4
-    return out
-
-
 def s2(sym, h4, d1, cfg, btc_bias=None):
     biases = engine.daily_bias(d1, cfg)
     a = engine.atr(h4, 14)
@@ -207,8 +185,6 @@ def main():
     btc_bias = engine.daily_bias(data["BTCUSDT"][1], cfg) if "BTCUSDT" in data else None
 
     runs = {
-        "S0 現行版": lambda s, h, d: s0_s1(s, h, d, cfg, False),
-        "S1 只做突破": lambda s, h, d: s0_s1(s, h, d, cfg, True),
         "S2 4H趨勢跟隨": lambda s, h, d: s2(s, h, d, cfg),
         "S3 4H趨勢＋BTC濾網": lambda s, h, d: s2(s, h, d, cfg, btc_bias),
         "S4 日線海龜": lambda s, h, d: s4(s, d),
