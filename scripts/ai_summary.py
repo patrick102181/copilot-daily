@@ -32,11 +32,11 @@ def facts():
     stats = load("stats.json", {}) or {}
     bt = (load("backtest.json", {}) or {}).get("stats", {})
     sigs = (load("signals.json", {}) or {}).get("signals", [])
-    open_sigs = [{k: s[k] for k in ("symbol", "side", "setup", "entry", "sl", "tp1", "tp2", "risk_pct", "stage")}
-                 | {"unrealized_r": s.get("unrealized_r")} for s in sigs if s["status"] == "open"]
+    open_sigs = [{k: s.get(k) for k in ("symbol", "side", "setup", "entry", "sl", "stop", "risk_pct", "bars_held",
+                                        "unrealized_r", "locked_r")} for s in sigs if s["status"] == "open"]
     recent = [{k: s.get(k) for k in ("symbol", "side", "setup", "result", "r")}
               for s in sorted([s for s in sigs if s["status"] == "closed"], key=lambda s: s["closed_time"])[-8:]]
-    pick = ("n", "win_rate", "avg_r", "total_r", "max_dd_r", "profit_factor", "by_setup", "reliable")
+    pick = ("n", "win_rate", "avg_r", "total_r", "max_dd_r", "profit_factor", "by_side", "worst_losing_streak", "reliable")
     return {
         "市場": [{k: m[k] for k in ("symbol", "price", "change_24h", "bias", "bias_raw", "status", "atr_pct")}
                for m in market.get("symbols", [])],
@@ -48,7 +48,10 @@ def facts():
 
 
 PROMPT = """你是交易副駕的「慢速層」解說員，讀者是會看技術分析、做加密貨幣永續合約的台灣交易者。
-下面的 JSON 是程式已經算好的事實。請用繁體中文（台灣用語）寫一段總結，規則：
+策略是 4H 趨勢跟隨：順著日線方向、突破前 20 根高低點進場，用 3 倍 ATR 移動停損出場、不設止盈。
+這種策略勝率本來就低（回測約 36%），靠少數大波段賺錢，連續停損是正常的。
+下面的 JSON 是程式已經算好的事實（stop＝目前移動停損價，locked_r＞0 代表停損已移過成本、這筆最差也是賺）。
+請用繁體中文（台灣用語）寫一段總結，規則：
 
 1. 只能使用 JSON 裡出現的數字，不可以自己推算或編造任何價格、機率、目標價
 2. 結構：先一句話講整體方向（幾個多頭、幾個空頭、幾個盤整）→ 進行中訊號的狀況 → 成績單（實盤 vs 回測）
@@ -91,9 +94,14 @@ def rule_text(f):
         parts.append(f"{'、'.join(brewing)} 的方向正在醞釀轉變，還沒確認。")
     o = f["進行中訊號"]
     if o:
-        parts.append("進行中：" + "；".join(
-            f"{s['symbol']} {'多' if s['side'] == 'long' else '空'}單（{s['setup']}），進場 {fmt_price(s['entry'])}、"
-            f"停損 {fmt_price(s['sl'])}{'，已過止盈 1、停損移到成本' if s['stage'] else ''}" for s in o) + "。")
+        items = []
+        for s in o:
+            t = (f"{s['symbol']} {'多' if s['side'] == 'long' else '空'}單，進場 {fmt_price(s['entry'])}、"
+                 f"目前停損 {fmt_price(s['stop'])}")
+            if (s.get("locked_r") or 0) > 0:
+                t += f"，停損已移過成本、鎖住 +{s['locked_r']}R"
+            items.append(t)
+        parts.append("進行中：" + "；".join(items) + "。")
     else:
         parts.append("目前沒有進行中的訊號。")
     lv, bt = f["實盤成績"], f["回測成績"]

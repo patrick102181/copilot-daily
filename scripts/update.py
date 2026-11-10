@@ -63,7 +63,7 @@ def main():
         # 1) 結算這個幣還沒結束的訊號
         for s in signals:
             if s["symbol"] == sym and s["status"] == "open":
-                engine.settle(s, h4, cfg)
+                engine.settle(s, h4, cfg, ind["atr"])
 
         # 2) 在最後一根已收盤的 4H 上找新訊號
         i = len(h4) - 1
@@ -71,7 +71,7 @@ def main():
         open_now = any(s["symbol"] == sym and s["status"] == "open" for s in signals)
         last_closed = max((s["closed_time"] for s in signals
                            if s["symbol"] == sym and s["status"] == "closed"), default=0)
-        cooling = last_closed + r["cooldown_bars"] * engine.H4 > h4[i]["ct"]
+        cooling = last_closed + r["cooldown_bars"] * engine.H4 >= h4[i]["ct"]  # 剛出場的那根不立刻再進
         status = "等待"
         if open_now:
             status = "持有中"

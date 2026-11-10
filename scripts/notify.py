@@ -29,9 +29,8 @@ def send_signals(sigs, cfg):
         lines = [
             f"<b>{html.escape(s['symbol'])}｜{side}｜{s['setup']}</b>（慢速層・4H）",
             f"進場 {fmt_price(s['entry'])}",
-            f"停損 {fmt_price(s['sl'])}（−{s['risk_pct']}%，名目 {cfg.get('notional_usdt', 1000)} U 約虧 {s['risk_usdt']} U）",
-            f"止盈1 {fmt_price(s['tp1'])}（平一半，停損移到成本）",
-            f"止盈2 {fmt_price(s['tp2'])}",
+            f"初始停損 {fmt_price(s['sl'])}（−{s['risk_pct']}%，名目 {cfg.get('notional_usdt', 1000)} U 約虧 {s['risk_usdt']} U）",
+            f"出場：{cfg['rules']['trail_atr']:g} 倍 ATR 移動停損，不設止盈（網站會顯示每 4 小時更新的停損價）",
             "",
             *[f"・{html.escape(x)}" for x in s["reasons"]],
         ]
