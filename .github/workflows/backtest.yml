@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
     inputs:
       bars:
-        description: "每個幣回測幾根 4H（1500 ≈ 250 天）"
-        default: "1500"
+        description: "每個幣回測幾根 4H（15000 ≈ 7 年，3000 ≈ 500 天）"
+        default: "15000"
 
 permissions:
   contents: write
@@ -32,7 +32,7 @@ jobs:
 
       - name: 回測
         env:
-          BARS: ${{ github.event.inputs.bars || '1500' }}
+          BARS: ${{ github.event.inputs.bars || '15000' }}
         run: python research/backtest.py --bars "$BARS"
 
       - name: 更新總結
