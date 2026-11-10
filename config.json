@@ -11,27 +11,20 @@
   "notional_usdt": 1000,
   "_notional說明": "每筆名目價值，只用來換算「停損會虧多少 USDT」，不會下單。",
 
-  "fee_pct_round_trip": 0.1,
-  "_fee說明": "一進一出的手續費合計（%）。合約吃單 0.05% × 2 = 0.1%。成績單會扣掉。",
+  "fee_pct_round_trip": 0.2,
+  "_fee說明": "一進一出的成本合計（%）：合約吃單手續費 0.05% × 2，再加 0.1% 滑價，保守估計。成績單會扣掉。",
 
   "rules": {
+    "_說明": "v2 趨勢跟隨（2026-11 用 2020 年起 7 年資料驗證後選定，都是教科書標準值，不要為了回測好看去微調）",
     "ema_fast": 20,
     "ema_mid": 50,
     "ema_slow": 200,
-    "atr_len": 14,
     "bias_confirm_days": 2,
-    "pullback_touch_pct": 0.3,
-    "breakout_lookback": 20,
-    "breakout_volume_mult": 2.0,
-    "swing_lookback": 10,
-    "stop_buffer_atr": 0.5,
-    "breakout_stop_atr": 1.5,
-    "tp1_r": 1.5,
-    "tp2_r": 2.5,
-    "min_risk_pct": 0.4,
-    "max_risk_pct": 8.0,
-    "max_hold_bars": 30,
-    "cooldown_bars": 3
+    "atr_len": 14,
+    "entry_lookback": 20,
+    "init_stop_atr": 2.0,
+    "trail_atr": 3.0,
+    "cooldown_bars": 0
   },
 
   "ai": {
