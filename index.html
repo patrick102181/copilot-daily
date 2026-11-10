@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0e11">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>交易副駕・慢速層</title>
+<style>
+:root{
+  --bg:#0b0e11;--card:#161a1e;--card2:#1e2329;--line:#2b3139;--tx:#eaecef;--mu:#848e9c;
+  --up:#2ebd85;--dn:#f6465d;--warn:#f0b90b;--acc:#5b8def;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.6 -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;-webkit-text-size-adjust:100%}
+body{padding:max(16px,env(safe-area-inset-top)) 16px max(28px,env(safe-area-inset-bottom))}
+main{max-width:860px;margin:0 auto}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:16px}
+h1{font-size:21px;margin:0;letter-spacing:.5px}
+h1 small{display:block;font-size:12px;color:var(--mu);font-weight:400;letter-spacing:0;margin-top:2px}
+.upd{font-size:12px;color:var(--mu);text-align:right;white-space:nowrap}
+section{margin:22px 0}
+h2{font-size:15px;margin:0 0 10px;color:var(--mu);font-weight:600;display:flex;align-items:center;gap:8px}
+h2 .n{background:var(--card2);color:var(--tx);border-radius:99px;padding:0 8px;font-size:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.sum{font-size:15px;line-height:1.75}
+.sum .by{display:block;margin-top:8px;font-size:12px;color:var(--mu)}
+.err{background:#2a1d0b;border:1px solid #5c4410;color:#f5d27a;border-radius:10px;padding:8px 12px;font-size:13px;margin-bottom:10px}
+.mono{font-variant-numeric:tabular-nums}
+.up{color:var(--up)}.dn{color:var(--dn)}.mu{color:var(--mu)}
+.badge{display:inline-block;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600;white-space:nowrap}
+.b-多{background:rgba(46,189,133,.15);color:var(--up)}
+.b-空{background:rgba(246,70,93,.15);color:var(--dn)}
+.b-盤整{background:var(--card2);color:var(--mu)}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 8px;font-size:11.5px;color:var(--mu);white-space:nowrap}
+.chip.hot{border-color:var(--warn);color:var(--warn)}
+/* 大方向 */
+.mk{display:grid;gap:8px}
+.mrow{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.mrow .sym{font-weight:700}
+.mrow .px{text-align:right;font-weight:600}
+.mrow .meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.mrow .chg{text-align:right;font-size:13px}
+/* 訊號 */
+.sigs{display:grid;gap:10px}
+.sig{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.sig .top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.sig .ttl{font-weight:700;font-size:16px}
+.track{position:relative;height:10px;border-radius:5px;background:var(--card2);margin:6px 2px 4px}
+.track .seg{position:absolute;top:0;bottom:0}
+.track .seg:first-child{border-radius:5px 0 0 5px}
+.track .tick{position:absolute;top:-3px;bottom:-3px;width:2px;margin-left:-1px;background:var(--tx);opacity:.7}
+.track .now{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--warn);border:2px solid var(--card)}
+.ends{display:flex;justify-content:space-between;font-size:11px;margin:0 0 8px}
+.lv{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.lv .lb{color:var(--mu);font-size:12px}
+.lv .v{font-weight:600;font-size:14px}
+.why{margin:10px 0 0;padding:10px 0 0;border-top:1px dashed var(--line);font-size:13px;color:var(--mu)}
+.why li{margin:2px 0}
+.why ul{margin:0;padding-left:18px}
+.empty{color:var(--mu);text-align:center;padding:22px 10px;font-size:14px}
+/* 成績單 */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vs .card h3{margin:0 0 8px;font-size:14px;display:flex;justify-content:space-between}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:13.5px}
+.kv dt{color:var(--mu)}.kv dd{margin:0;text-align:right;font-weight:600}
+.big{font-size:24px;font-weight:700;line-height:1.2}
+.note{font-size:12.5px;color:var(--warn);margin-top:8px}
+.curve{margin-top:10px}
+.curve svg{width:100%;height:110px;display:block}
+.gap{margin-top:10px;font-size:13.5px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{color:var(--mu);font-weight:500;font-size:12px}
+td.r,th.r{text-align:right}
+.cl td,.cl th{padding:7px 4px;font-size:13px}
+.cl td:first-child{font-size:12px}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+summary{cursor:pointer;font-weight:600}
+details p,details li{font-size:13.5px;color:#c7cdd4}
+footer{color:var(--mu);font-size:12px;margin-top:26px;text-align:center;line-height:1.7}
+@media (max-width:520px){.vs{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>交易副駕・慢速層<small>日線定方向・4H 找進場・每筆都記帳結算</small></h1>
+    <div class="upd" id="upd">載入中…</div>
+  </header>
+
+  <div id="errs"></div>
+
+  <section>
+    <h2>AI 總結</h2>
+    <div class="card sum" id="sum">—</div>
+  </section>
+
+  <section>
+    <h2>進行中訊號 <span class="n" id="openN">0</span></h2>
+    <div class="sigs" id="open"></div>
+  </section>
+
+  <section>
+    <h2>日線大方向</h2>
+    <div class="mk" id="mk"></div>
+  </section>
+
+  <section>
+    <h2>成績單：實盤 vs 回測</h2>
+    <div class="vs" id="vs"></div>
+    <div class="card gap" id="gap" hidden></div>
+  </section>
+
+  <section>
+    <h2>依進場方式</h2>
+    <div class="card tblwrap" id="bySetup"></div>
+  </section>
+
+  <section>
+    <h2>最近結算 <span class="n" id="closedN">0</span></h2>
+    <div class="card tblwrap" id="closed"></div>
+  </section>
+
+  <section>
+    <details>
+      <summary>規則白話說明</summary>
+      <ol>
+        <li><b>日線定方向，一天最多變一次</b>：收在 EMA50 上、EMA20 在 EMA50 上、EMA50 往上走 → 多頭；反過來 → 空頭；其他 → 盤整。而且要<b>連續 2 天</b>都一樣才換方向，盤中怎麼跳都不影響。</li>
+        <li><b>只做順方向的單</b>：多頭只找做多、空頭只找做空，盤整不出手。</li>
+        <li><b>4H 收盤才判斷</b>：「回踩」＝碰到 EMA20 後收回來、MACD 柱轉強；「突破」＝收盤突破前 20 根高點，而且量是均量 2 倍以上。</li>
+        <li><b>停損留插針空間</b>：回踩單放在近 10 根低點再往外推 0.5 倍 ATR；突破單放在進場 − 1.5 倍 ATR。</li>
+        <li><b>出場寫死</b>：止盈 1（1.5R）先平一半、停損移到成本；止盈 2（2.5R）全平；5 天（30 根 4H）還沒結束就收盤價平掉。</li>
+        <li><b>一個幣同時只有一筆</b>：結束後冷卻 12 小時，同一根 K 線不會重複發訊號。</li>
+        <li><b>R 是什麼</b>：1R ＝ 這筆停損會虧的錢。+2R 就是賺到停損金額的兩倍。成績單都已扣手續費。</li>
+      </ol>
+      <p>所有規則參數都在 <code>config.json</code>，改完記得重跑回測再看成績。</p>
+    </details>
+  </section>
+
+  <footer>只讀行情、不會下單。訊號是規則算出來的參考，不是投資建議；回測不代表未來表現。</footer>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const tw = (ms, withDate = true) => ms ? new Date(ms).toLocaleString("zh-TW", {timeZone: "Asia/Taipei", hour12: false,
+  ...(withDate ? {month: "numeric", day: "numeric"} : {}), hour: "2-digit", minute: "2-digit"}) : "—";
+const twc = (ct) => ct ? tw(ct + 1) : "—"; // K 線收盤時間 xx:59:59 → 顯示成整點
+const px = (p) => p == null ? "—" : p >= 1000 ? p.toLocaleString("en-US", {maximumFractionDigits: 1})
+  : p >= 1 ? (+p.toFixed(4)).toString() : (+p.toPrecision(6)).toString();
+const rr = (r) => r == null ? "—" : `${r > 0 ? "+" : ""}${(+r).toFixed(2)}R`;
+const cls = (v) => v > 0 ? "up" : v < 0 ? "dn" : "mu";
+const sideTx = (s) => s === "long" ? "做多" : "做空";
+
+async function get(name) {
+  try { const r = await fetch(`data/${name}?_=${Date.now()}`); return r.ok ? await r.json() : null; }
+  catch { return null; }
+}
+
+function renderMarket(m) {
+  if (!m) { $("mk").innerHTML = `<div class="card empty">還沒有資料。第一次排程跑完就會出現。</div>`; return; }
+  $("upd").innerHTML = `最後更新 ${tw(m.updated)}<br>資料：${esc(m.source_label)}`;
+  $("errs").innerHTML = (m.errors || []).map((e) => `<div class="err">${esc(e)}</div>`).join("");
+  $("mk").innerHTML = m.symbols.map((s) => {
+    const brewing = s.bias_raw !== s.bias ? `<span class="chip hot" title="今天的原始判斷是${esc(s.bias_raw)}，要再確認一天才換">醞釀轉${esc(s.bias_raw)}</span>` : "";
+    const st = s.status === "新訊號" ? `<span class="chip hot">新訊號</span>` : `<span class="chip">${esc(s.status)}</span>`;
+    return `<div class="mrow">
+      <div class="meta"><span class="sym">${esc(s.symbol.replace(/USDT$/, ""))}</span>
+        <span class="badge b-${esc(s.bias)}">${esc(s.bias)}</span>${brewing}${st}</div>
+      <div class="px mono">${px(s.price)}</div>
+      <div class="meta mu" style="font-size:12px">方向自 ${twc(s.bias_since)} 起・4H 波動 ${s.atr_pct ?? "—"}%</div>
+      <div class="chg mono ${cls(s.change_24h)}">${s.change_24h > 0 ? "+" : ""}${s.change_24h}%</div>
+    </div>`;
+  }).join("");
+}
+
+function ladder(s, price, notional) {
+  // 一條軌道：停損 → 進場（紅）→ 止盈2（綠），止盈1 打刻度，黃點＝現價
+  const L = s.side === "long";
+  const lo = Math.min(s.sl, s.tp2), hi = Math.max(s.sl, s.tp2);
+  const pos = (v) => Math.max(0, Math.min(100, (v - lo) / (hi - lo) * 100));
+  const cur = price ?? s.entry, pe = pos(s.entry), p1 = pos(s.tp1);
+  const red = L ? `left:0;width:${pe}%` : `left:${pe}%;width:${100 - pe}%`;
+  const grn = L ? `left:${pe}%;width:${100 - pe}%` : `left:0;width:${pe}%`;
+  const cells = [["停損", s.sl, "dn"], ["進場", s.entry, ""], ["止盈 1", s.tp1, "up"], ["止盈 2", s.tp2, "up"]];
+  return `<div class="track">
+      <div class="seg" style="${red};background:rgba(246,70,93,.45)"></div>
+      <div class="seg" style="${grn};background:rgba(46,189,133,.4)"></div>
+      <div class="tick" style="left:${pe}%"></div><div class="tick" style="left:${p1}%"></div>
+      <div class="now" style="left:${pos(cur)}%" title="現價"></div>
+    </div>
+    <div class="ends mu"><span>${L ? "停損" : "止盈 2"}</span><span>${L ? "止盈 2" : "停損"}</span></div>
+    <div class="lv">${cells.map(([n, v, c]) => `<div><div class="lb">${n}</div><div class="v mono ${c}">${px(v)}</div></div>`).join("")}</div>
+    <div class="mu" style="font-size:12.5px;margin-top:8px"><span style="color:var(--warn)">●</span> 現價 <span class="mono">${px(cur)}</span>・停損 −${s.risk_pct}%（名目 ${notional} U 約虧 ${s.risk_usdt} U）${s.unrealized_r != null ? `・目前 <span class="${cls(s.unrealized_r)}">${rr(s.unrealized_r)}</span>` : ""}</div>`;
+}
+
+function renderOpen(sigs, market) {
+  const open = sigs.filter((s) => s.status === "open").reverse();
+  $("openN").textContent = open.length;
+  const prices = Object.fromEntries((market?.symbols || []).map((m) => [m.symbol, m.price]));
+  const notional = market?.notional_usdt ?? 1000;
+  $("open").innerHTML = open.length ? open.map((s) => `<div class="sig">
+    <div class="top"><div class="ttl">${esc(s.symbol.replace(/USDT$/, ""))}
+      <span class="badge b-${s.side === "long" ? "多" : "空"}">${sideTx(s.side)}</span>
+      <span class="chip">${esc(s.setup)}</span>${s.stage ? `<span class="chip hot">已過止盈1・停損在成本</span>` : ""}</div>
+      <div class="mu" style="font-size:12px">${twc(s.time)} 發出</div></div>
+    ${ladder(s, prices[s.symbol], notional)}
+    <div class="why"><ul>${s.reasons.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>
+  </div>`).join("") : `<div class="card empty">目前沒有進行中的訊號。<br>慢速層一週可能只出手幾次，這是正常的。</div>`;
+}
+
+function curveSvg(curve) {
+  if (!curve || curve.length < 2) return "";
+  const ys = curve.map((c) => c[1]), n = ys.length;
+  const lo = Math.min(0, ...ys), hi = Math.max(0, ...ys), span = hi - lo || 1;
+  const W = 300, H = 100, x = (i) => i / (n - 1) * W, y = (v) => H - (v - lo) / span * (H - 8) - 4;
+  const pts = ys.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+  const last = ys[n - 1];
+  return `<div class="curve"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="累積 R 走勢">
+    <line x1="0" x2="${W}" y1="${y(0)}" y2="${y(0)}" stroke="#2b3139" stroke-dasharray="3 3"/>
+    <polyline points="${pts}" fill="none" stroke="${last >= 0 ? "#2ebd85" : "#f6465d"}" stroke-width="2" vector-effect="non-scaling-stroke"/>
+  </svg><div class="mu" style="font-size:11.5px;display:flex;justify-content:space-between"><span>第 1 筆</span><span>累積 R</span><span>第 ${n} 筆</span></div></div>`;
+}
+
+function statCard(title, st, sub) {
+  if (!st || !st.n) return `<div class="card"><h3>${title}<span class="mu" style="font-weight:400">${sub || ""}</span></h3>
+    <div class="empty">${title === "實盤" ? "還沒有結算的訊號。<br>訊號出現、跑完止盈或停損後才會算進來。" : "還沒跑過回測。<br>到 GitHub → Actions → 回測 → Run workflow。"}</div></div>`;
+  return `<div class="card"><h3>${title}<span class="mu" style="font-weight:400">${sub || ""}</span></h3>
+    <div style="display:flex;gap:18px;margin-bottom:8px">
+      <div><div class="mu" style="font-size:12px">勝率</div><div class="big mono">${st.win_rate}%</div></div>
+      <div><div class="mu" style="font-size:12px">平均每筆</div><div class="big mono ${cls(st.avg_r)}">${rr(st.avg_r)}</div></div>
+    </div>
+    <dl class="kv mono">
+      <dt>已結算</dt><dd>${st.n} 筆${st.open ? `（進行中 ${st.open}）` : ""}</dd>
+      <dt>總計</dt><dd class="${cls(st.total_r)}">${rr(st.total_r)}</dd>
+      <dt>賺的平均</dt><dd class="up">${rr(st.avg_win_r)}</dd>
+      <dt>賠的平均</dt><dd class="dn">${rr(st.avg_loss_r)}</dd>
+      <dt>獲利因子</dt><dd>${st.profit_factor ?? "—"}</dd>
+      <dt>最大回撤</dt><dd class="dn">−${st.max_dd_r}R</dd>
+      <dt>平均持有</dt><dd>${(st.avg_hold_bars * 4 / 24).toFixed(1)} 天</dd>
+    </dl>
+    ${st.reliable ? "" : `<div class="note">樣本 ${st.n} 筆，少於 30 筆，勝率還不可靠。</div>`}
+    ${curveSvg(st.curve)}
+  </div>`;
+}
+
+function renderStats(live, bt) {
+  const b = bt?.stats;
+  const period = bt?.period ? `${new Date(bt.period[0]).toLocaleDateString("zh-TW")}～${new Date(bt.period[1]).toLocaleDateString("zh-TW")}` : "";
+  $("vs").innerHTML = statCard("實盤", live, "排程自動記帳") + statCard("回測", b, period);
+  if (live?.n && b?.n) {
+    const d = live.avg_r - b.avg_r;
+    const msg = live.n < 30 ? `實盤才 ${live.n} 筆，先不要下結論，至少累積到 30 筆再比。`
+      : d < -0.15 ? `實盤平均每筆比回測少 ${Math.abs(d).toFixed(2)}R。規則可能只是剛好適合過去，或市況變了，建議先縮小倉位觀察。`
+      : `實盤和回測差距在 ${Math.abs(d).toFixed(2)}R 內，規則目前表現跟預期一致。`;
+    $("gap").hidden = false;
+    $("gap").innerHTML = `<b>比對：</b>${msg}`;
+  }
+  const rows = (st, label) => Object.entries(st?.by_setup || {}).map(([k, v]) =>
+    `<tr><td>${label}</td><td>${esc(k)}</td><td class="r mono">${v.n}</td><td class="r mono">${v.win_rate}%</td><td class="r mono ${cls(v.avg_r)}">${rr(v.avg_r)}</td></tr>`).join("");
+  const body = rows(live, "實盤") + rows(b, "回測");
+  $("bySetup").innerHTML = body ? `<table><tr><th>來源</th><th>方式</th><th class="r">筆數</th><th class="r">勝率</th><th class="r">平均</th></tr>${body}</table>`
+    : `<div class="empty">還沒有資料。</div>`;
+}
+
+function renderClosed(sigs) {
+  const c = sigs.filter((s) => s.status === "closed").sort((a, b) => b.closed_time - a.closed_time);
+  $("closedN").textContent = c.length;
+  $("closed").innerHTML = c.length ? `<table class="cl"><tr><th>結束</th><th>單</th><th>結果</th><th class="r">R</th></tr>${
+    c.slice(0, 40).map((s) => `<tr><td class="mono mu">${twc(s.closed_time)}</td>
+      <td><b>${esc(s.symbol.replace(/USDT$/, ""))}</b> <span class="${s.side === "long" ? "up" : "dn"}">${s.side === "long" ? "多" : "空"}</span><span class="mu">・${esc(s.setup)}</span></td>
+      <td>${esc(s.result).replace("止盈 1 後保本出場", "保本出場")}</td>
+      <td class="r mono ${cls(s.r)}">${rr(s.r)}</td></tr>`).join("")}</table>` : `<div class="empty">還沒有結算的訊號。</div>`;
+}
+
+(async () => {
+  const [market, book, stats, bt, sum] = await Promise.all(
+    ["market.json", "signals.json", "stats.json", "backtest.json", "summary.json"].map(get));
+  const sigs = book?.signals || [];
+  renderMarket(market);
+  renderOpen(sigs, market);
+  renderStats(stats, bt);
+  renderClosed(sigs);
+  $("sum").innerHTML = sum ? `${esc(sum.text)}<span class="by">${esc(sum.by)}・${tw(sum.generated)}</span>` : `<span class="mu">還沒有總結。</span>`;
+})();
+</script>
+</body>
+</html>

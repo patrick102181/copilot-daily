@@ -1,0 +1,41 @@
+{
+  "_說明": "交易副駕・慢速層的設定。改完推上 GitHub，下一次排程就會生效。",
+
+  "symbols": ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT", "XRPUSDT", "DOGEUSDT", "ARBUSDT"],
+
+  "_symbols說明": "要觀察的幣，用幣安的交易對名稱。合約限定、現貨沒上的幣，在 GitHub 伺服器上可能抓不到（見 README「資料來源」）。",
+
+  "data_sources": ["binance_futures", "binance_spot_vision"],
+  "_data_sources說明": "依序嘗試。GitHub 的伺服器在美國，幣安合約 API 會被地區封鎖，這時自動改用幣安現貨公開資料（價格幾乎一樣）。放在 DigitalOcean 印度機房跑就能直接用合約資料。",
+
+  "notional_usdt": 1000,
+  "_notional說明": "每筆名目價值，只用來換算「停損會虧多少 USDT」，不會下單。",
+
+  "fee_pct_round_trip": 0.1,
+  "_fee說明": "一進一出的手續費合計（%）。合約吃單 0.05% × 2 = 0.1%。成績單會扣掉。",
+
+  "rules": {
+    "ema_fast": 20,
+    "ema_mid": 50,
+    "ema_slow": 200,
+    "atr_len": 14,
+    "bias_confirm_days": 2,
+    "pullback_touch_pct": 0.3,
+    "breakout_lookback": 20,
+    "breakout_volume_mult": 2.0,
+    "swing_lookback": 10,
+    "stop_buffer_atr": 0.5,
+    "breakout_stop_atr": 1.5,
+    "tp1_r": 1.5,
+    "tp2_r": 2.5,
+    "min_risk_pct": 0.4,
+    "max_risk_pct": 8.0,
+    "max_hold_bars": 30,
+    "cooldown_bars": 3
+  },
+
+  "ai": {
+    "model": "claude-sonnet-5-5",
+    "max_tokens": 900
+  }
+}
