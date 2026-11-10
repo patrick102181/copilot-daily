@@ -1,0 +1,35 @@
+name: 策略實驗室
+
+# 手動執行：用 2020 年以來的資料比較幾個事先寫死的策略，結果寫到 data/lab.json
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  lab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 跑策略比較
+        run: python research/strategy_lab.py
+
+      - name: 存回 repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/lab.json
+          git diff --cached --quiet || git commit -m "策略實驗室結果 $(date -u +'%Y-%m-%d')"
+          git pull --rebase --quiet || true
+          git push
