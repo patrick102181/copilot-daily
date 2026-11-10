@@ -1,0 +1,99 @@
+{
+ "updated": 1794298741536,
+ "symbols": [
+  {
+   "symbol": "BTCUSDT",
+   "price": 74848.6,
+   "change_24h": 1.32,
+   "bias": "空",
+   "bias_raw": "空",
+   "bias_since": 1793750399999,
+   "above_ema200_4h": false,
+   "atr_pct": 1.15,
+   "status": "等待",
+   "bar_close": 1794297599999,
+   "source": "binance_spot_vision"
+  },
+  {
+   "symbol": "ETHUSDT",
+   "price": 2116.0,
+   "change_24h": 1.05,
+   "bias": "空",
+   "bias_raw": "空",
+   "bias_since": 1792972799999,
+   "above_ema200_4h": false,
+   "atr_pct": 1.63,
+   "status": "等待",
+   "bar_close": 1794297599999,
+   "source": "binance_spot_vision"
+  },
+  {
+   "symbol": "SOLUSDT",
+   "price": 86.1,
+   "change_24h": 0.62,
+   "bias": "空",
+   "bias_raw": "空",
+   "bias_since": 1793231999999,
+   "above_ema200_4h": false,
+   "atr_pct": 1.82,
+   "status": "等待",
+   "bar_close": 1794297599999,
+   "source": "binance_spot_vision"
+  },
+  {
+   "symbol": "BNBUSDT",
+   "price": 691.09,
+   "change_24h": 2.23,
+   "bias": "空",
+   "bias_raw": "空",
+   "bias_since": 1793663999999,
+   "above_ema200_4h": false,
+   "atr_pct": 1.05,
+   "status": "等待",
+   "bar_close": 1794297599999,
+   "source": "binance_spot_vision"
+  },
+  {
+   "symbol": "XRPUSDT",
+   "price": 1.096,
+   "change_24h": 1.09,
+   "bias": "空",
+   "bias_raw": "空",
+   "bias_since": 1792540799999,
+   "above_ema200_4h": false,
+   "atr_pct": 2.1,
+   "status": "等待",
+   "bar_close": 1794297599999,
+   "source": "binance_spot_vision"
+  },
+  {
+   "symbol": "DOGEUSDT",
+   "price": 0.0701,
+   "change_24h": 2.95,
+   "bias": "空",
+   "bias_raw": "空",
+   "bias_since": 1792367999999,
+   "above_ema200_4h": false,
+   "atr_pct": 1.78,
+   "status": "等待",
+   "bar_close": 1794297599999,
+   "source": "binance_spot_vision"
+  },
+  {
+   "symbol": "ARBUSDT",
+   "price": 0.1675,
+   "change_24h": -1.82,
+   "bias": "空",
+   "bias_raw": "盤整",
+   "bias_since": 1793836799999,
+   "above_ema200_4h": false,
+   "atr_pct": 3.31,
+   "status": "等待",
+   "bar_close": 1794297599999,
+   "source": "binance_spot_vision"
+  }
+ ],
+ "errors": [],
+ "source_label": "現貨",
+ "notional_usdt": 1000
+}
