@@ -1,0 +1,50 @@
+name: 每 4 小時更新
+
+# 幣安 4H K 線在 UTC 0/4/8/12/16/20 點收盤（台灣時間 8/12/16/20/0/4 點），收盤後 5 分鐘跑。
+# GitHub 的排程常會晚幾分鐘到幾十分鐘，屬正常現象。
+on:
+  schedule:
+    - cron: "5 0,4,8,12,16,20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # 選填：設定後新訊號會推到你的 Telegram
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      # 選填：設定後由 Claude 寫總結；沒有就用規則組句
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # 選填：網站網址，會附在推播最後（Settings → Secrets and variables → Actions → Variables）
+      SITE_URL: ${{ vars.SITE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # 只用 Python 內建模組，不需要 pip install
+      - name: 抓資料、結算、找訊號
+        run: python scripts/update.py
+
+      - name: AI 總結
+        run: python scripts/ai_summary.py
+
+      - name: 存回 repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "資料更新 $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git pull --rebase --quiet || true
+          git push
