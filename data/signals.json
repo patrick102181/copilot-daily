@@ -13,7 +13,7 @@
    "risk": 1868.72342912248,
    "hi": 74843.82,
    "lo": 72727.27,
-   "last_t": 1794398400000,
+   "last_t": 1794427200000,
    "risk_pct": 2.55,
    "risk_usdt": 25.52,
    "bias": "空",
@@ -24,9 +24,9 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 6,
-   "last_price": 73991.97,
-   "unrealized_r": -0.415,
+   "bars_held": 8,
+   "last_price": 74015.19,
+   "unrealized_r": -0.428,
    "locked_r": -1.0
   },
   {
@@ -42,7 +42,7 @@
    "risk": 78.78411204009838,
    "hi": 2109.09,
    "lo": 2006.0,
-   "last_t": 1794398400000,
+   "last_t": 1794412800000,
    "risk_pct": 3.89,
    "risk_usdt": 38.92,
    "bias": "空",
@@ -52,11 +52,16 @@
     "初始停損＝進場 ＋ 2 倍 ATR",
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
-   "status": "open",
-   "bars_held": 6,
+   "status": "closed",
+   "bars_held": 7,
    "last_price": 2075.31,
    "unrealized_r": -0.648,
-   "locked_r": -1.0
+   "locked_r": -1.0,
+   "result": "停損",
+   "r_gross": -1.0,
+   "r": -1.051,
+   "closed_time": 1794427199999,
+   "exit_price": 2103.0041120400983
   },
   {
    "id": "SOLUSDT-1794312000000",
@@ -71,7 +76,7 @@
    "risk": 3.5255593832022294,
    "hi": 85.41,
    "lo": 81.34,
-   "last_t": 1794398400000,
+   "last_t": 1794412800000,
    "risk_pct": 4.28,
    "risk_usdt": 42.84,
    "bias": "空",
@@ -81,11 +86,16 @@
     "初始停損＝進場 ＋ 2 倍 ATR",
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
-   "status": "open",
-   "bars_held": 6,
+   "status": "closed",
+   "bars_held": 7,
    "last_price": 84.85,
    "unrealized_r": -0.723,
-   "locked_r": -1.0
+   "locked_r": -1.0,
+   "result": "停損",
+   "r_gross": -1.0,
+   "r": -1.047,
+   "closed_time": 1794427199999,
+   "exit_price": 85.82555938320223
   },
   {
    "id": "XRPUSDT-1794312000000",
@@ -100,7 +110,7 @@
    "risk": 0.05030566583971209,
    "hi": 1.0849,
    "lo": 1.0311,
-   "last_t": 1794398400000,
+   "last_t": 1794427200000,
    "risk_pct": 4.83,
    "risk_usdt": 48.28,
    "bias": "空",
@@ -111,10 +121,36 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 6,
-   "last_price": 1.0727,
-   "unrealized_r": -0.612,
+   "bars_held": 8,
+   "last_price": 1.0524,
+   "unrealized_r": -0.209,
    "locked_r": -1.0
+  },
+  {
+   "id": "ARBUSDT-1794427200000",
+   "symbol": "ARBUSDT",
+   "side": "short",
+   "setup": "趨勢突破",
+   "bar_t": 1794427200000,
+   "time": 1794441599999,
+   "entry": 0.1518,
+   "sl": 0.1637638245913247,
+   "stop": 0.1637638245913247,
+   "risk": 0.011963824591324727,
+   "hi": 0.1593,
+   "lo": 0.1509,
+   "last_t": 1794427200000,
+   "risk_pct": 7.88,
+   "risk_usdt": 78.81,
+   "bias": "空",
+   "reasons": [
+    "日線空頭（已連續確認，不會盤中翻轉）",
+    "4H 收盤跌破前 20 根最低點",
+    "初始停損＝進場 ＋ 2 倍 ATR",
+    "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
+   ],
+   "status": "open",
+   "bars_held": 0
   }
  ]
 }
