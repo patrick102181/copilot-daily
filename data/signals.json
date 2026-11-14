@@ -13,7 +13,7 @@
    "risk": 1868.72342912248,
    "hi": 74843.82,
    "lo": 67568.0,
-   "last_t": 1794571200000,
+   "last_t": 1794600000000,
    "risk_pct": 2.55,
    "risk_usdt": 25.52,
    "bias": "空",
@@ -24,9 +24,9 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 18,
-   "last_price": 68899.65,
-   "unrealized_r": 2.31,
+   "bars_held": 20,
+   "last_price": 68314.0,
+   "unrealized_r": 2.623,
    "locked_r": 1.248
   },
   {
@@ -110,7 +110,7 @@
    "risk": 0.05030566583971209,
    "hi": 1.0849,
    "lo": 0.9975,
-   "last_t": 1794571200000,
+   "last_t": 1794600000000,
    "risk_pct": 4.83,
    "risk_usdt": 48.28,
    "bias": "空",
@@ -121,9 +121,9 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 18,
-   "last_price": 1.0209,
-   "unrealized_r": 0.417,
+   "bars_held": 20,
+   "last_price": 1.011,
+   "unrealized_r": 0.614,
    "locked_r": -0.514
   },
   {
@@ -135,11 +135,11 @@
    "time": 1794441599999,
    "entry": 0.1518,
    "sl": 0.1637638245913247,
-   "stop": 0.15759773727036494,
+   "stop": 0.1568115265244137,
    "risk": 0.011963824591324727,
    "hi": 0.1593,
    "lo": 0.1416,
-   "last_t": 1794571200000,
+   "last_t": 1794600000000,
    "risk_pct": 7.88,
    "risk_usdt": 78.81,
    "bias": "空",
@@ -150,10 +150,10 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 10,
-   "last_price": 0.1476,
-   "unrealized_r": 0.351,
-   "locked_r": -0.485
+   "bars_held": 12,
+   "last_price": 0.1451,
+   "unrealized_r": 0.56,
+   "locked_r": -0.419
   },
   {
    "id": "BNBUSDT-1794470400000",
@@ -168,7 +168,7 @@
    "risk": 15.908450212865093,
    "hi": 674.71,
    "lo": 622.41,
-   "last_t": 1794571200000,
+   "last_t": 1794600000000,
    "risk_pct": 2.39,
    "risk_usdt": 23.94,
    "bias": "空",
@@ -179,9 +179,9 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 7,
-   "last_price": 634.04,
-   "unrealized_r": 1.909,
+   "bars_held": 9,
+   "last_price": 630.31,
+   "unrealized_r": 2.144,
    "locked_r": 0.757
   },
   {
@@ -197,7 +197,7 @@
    "risk": 77.46016579327257,
    "hi": 2021.11,
    "lo": 1895.95,
-   "last_t": 1794571200000,
+   "last_t": 1794600000000,
    "risk_pct": 4.0,
    "risk_usdt": 40.04,
    "bias": "空",
@@ -208,9 +208,9 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 3,
-   "last_price": 1934.93,
-   "unrealized_r": -0.005,
+   "bars_held": 5,
+   "last_price": 1929.88,
+   "unrealized_r": 0.061,
    "locked_r": -1.0
   },
   {
@@ -258,7 +258,7 @@
    "risk": 0.002977440539544614,
    "hi": 0.0667,
    "lo": 0.06301,
-   "last_t": 1794571200000,
+   "last_t": 1794600000000,
    "risk_pct": 4.68,
    "risk_usdt": 46.78,
    "bias": "空",
@@ -269,9 +269,9 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 3,
-   "last_price": 0.06526,
-   "unrealized_r": -0.541,
+   "bars_held": 5,
+   "last_price": 0.06454,
+   "unrealized_r": -0.299,
    "locked_r": -1.0
   }
  ]
