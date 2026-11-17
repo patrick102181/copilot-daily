@@ -13,7 +13,7 @@
    "risk": 1868.72342912248,
    "hi": 74843.82,
    "lo": 62006.0,
-   "last_t": 1794902400000,
+   "last_t": 1794931200000,
    "risk_pct": 2.55,
    "risk_usdt": 25.52,
    "bias": "空",
@@ -24,9 +24,9 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 41,
-   "last_price": 64995.54,
-   "unrealized_r": 4.399,
+   "bars_held": 43,
+   "last_price": 63753.75,
+   "unrealized_r": 5.063,
    "locked_r": 4.079
   },
   {
@@ -140,11 +140,11 @@
    "time": 1794441599999,
    "entry": 0.1518,
    "sl": 0.1637638245913247,
-   "stop": 0.13516351536544188,
+   "stop": 0.13509354130999832,
    "risk": 0.011963824591324727,
    "hi": 0.1593,
    "lo": 0.1229,
-   "last_t": 1794902400000,
+   "last_t": 1794931200000,
    "risk_pct": 7.88,
    "risk_usdt": 78.81,
    "bias": "空",
@@ -155,10 +155,10 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 33,
-   "last_price": 0.133,
-   "unrealized_r": 1.571,
-   "locked_r": 1.391
+   "bars_held": 35,
+   "last_price": 0.131,
+   "unrealized_r": 1.739,
+   "locked_r": 1.396
   },
   {
    "id": "BNBUSDT-1794470400000",
@@ -173,7 +173,7 @@
    "risk": 15.908450212865093,
    "hi": 674.71,
    "lo": 566.0,
-   "last_t": 1794902400000,
+   "last_t": 1794931200000,
    "risk_pct": 2.39,
    "risk_usdt": 23.94,
    "bias": "空",
@@ -184,9 +184,9 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 30,
-   "last_price": 594.59,
-   "unrealized_r": 4.389,
+   "bars_held": 32,
+   "last_price": 587.91,
+   "unrealized_r": 4.809,
    "locked_r": 4.235
   },
   {
@@ -268,7 +268,7 @@
    "risk": 0.002977440539544614,
    "hi": 0.0667,
    "lo": 0.05543,
-   "last_t": 1794902400000,
+   "last_t": 1794931200000,
    "risk_pct": 4.68,
    "risk_usdt": 46.78,
    "bias": "空",
@@ -279,9 +279,9 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 26,
-   "last_price": 0.05939,
-   "unrealized_r": 1.431,
+   "bars_held": 28,
+   "last_price": 0.05905,
+   "unrealized_r": 1.545,
    "locked_r": 1.23
   },
   {
