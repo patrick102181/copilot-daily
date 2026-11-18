@@ -13,7 +13,7 @@
    "risk": 1868.72342912248,
    "hi": 74843.82,
    "lo": 62006.0,
-   "last_t": 1794931200000,
+   "last_t": 1794960000000,
    "risk_pct": 2.55,
    "risk_usdt": 25.52,
    "bias": "空",
@@ -24,9 +24,9 @@
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
    "status": "open",
-   "bars_held": 43,
-   "last_price": 63753.75,
-   "unrealized_r": 5.063,
+   "bars_held": 45,
+   "last_price": 64457.96,
+   "unrealized_r": 4.687,
    "locked_r": 4.079
   },
   {
@@ -144,7 +144,7 @@
    "risk": 0.011963824591324727,
    "hi": 0.1593,
    "lo": 0.1229,
-   "last_t": 1794931200000,
+   "last_t": 1794945600000,
    "risk_pct": 7.88,
    "risk_usdt": 78.81,
    "bias": "空",
@@ -154,11 +154,16 @@
     "初始停損＝進場 ＋ 2 倍 ATR",
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
-   "status": "open",
-   "bars_held": 35,
+   "status": "closed",
+   "bars_held": 36,
    "last_price": 0.131,
    "unrealized_r": 1.739,
-   "locked_r": 1.396
+   "locked_r": 1.396,
+   "result": "移動停損出場",
+   "r_gross": 1.396,
+   "r": 1.371,
+   "closed_time": 1794959999999,
+   "exit_price": 0.13509354130999832
   },
   {
    "id": "BNBUSDT-1794470400000",
@@ -173,7 +178,7 @@
    "risk": 15.908450212865093,
    "hi": 674.71,
    "lo": 566.0,
-   "last_t": 1794931200000,
+   "last_t": 1794945600000,
    "risk_pct": 2.39,
    "risk_usdt": 23.94,
    "bias": "空",
@@ -183,11 +188,16 @@
     "初始停損＝進場 ＋ 2 倍 ATR",
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
-   "status": "open",
-   "bars_held": 32,
+   "status": "closed",
+   "bars_held": 33,
    "last_price": 587.91,
    "unrealized_r": 4.809,
-   "locked_r": 4.235
+   "locked_r": 4.235,
+   "result": "移動停損出場",
+   "r_gross": 4.235,
+   "r": 4.151,
+   "closed_time": 1794959999999,
+   "exit_price": 597.0449605753295
   },
   {
    "id": "ETHUSDT-1794528000000",
@@ -268,7 +278,7 @@
    "risk": 0.002977440539544614,
    "hi": 0.0667,
    "lo": 0.05543,
-   "last_t": 1794931200000,
+   "last_t": 1794945600000,
    "risk_pct": 4.68,
    "risk_usdt": 46.78,
    "bias": "空",
@@ -278,11 +288,16 @@
     "初始停損＝進場 ＋ 2 倍 ATR",
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
-   "status": "open",
-   "bars_held": 28,
+   "status": "closed",
+   "bars_held": 29,
    "last_price": 0.05905,
    "unrealized_r": 1.545,
-   "locked_r": 1.23
+   "locked_r": 1.23,
+   "result": "移動停損出場",
+   "r_gross": 1.23,
+   "r": 1.187,
+   "closed_time": 1794959999999,
+   "exit_price": 0.05998867532797875
   },
   {
    "id": "SOLUSDT-1794657600000",
