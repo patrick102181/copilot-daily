@@ -1,6 +1,6 @@
 {
  "n": 9,
- "open": 1,
+ "open": 2,
  "win_rate": 66.7,
  "avg_r": 0.664,
  "total_r": 5.98,
@@ -68,5 +68,5 @@
   ]
  ],
  "reliable": false,
- "updated": 1794985728353
+ "updated": 1795021806152
 }
