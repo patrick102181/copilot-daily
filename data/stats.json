@@ -1,33 +1,33 @@
 {
- "n": 9,
- "open": 7,
+ "n": 12,
+ "open": 4,
  "win_rate": 66.7,
- "avg_r": 0.664,
- "total_r": 5.98,
- "avg_win_r": 1.52,
- "avg_loss_r": -1.048,
- "profit_factor": 2.9,
+ "avg_r": 1.19,
+ "total_r": 14.28,
+ "avg_win_r": 2.243,
+ "avg_loss_r": -0.914,
+ "profit_factor": 4.9,
  "max_dd_r": 3.14,
- "max_r": 4.15,
+ "max_r": 7.17,
  "worst_losing_streak": 3,
- "avg_hold_bars": 20.1,
+ "avg_hold_bars": 21.8,
  "by_setup": {
   "趨勢突破": {
-   "n": 9,
+   "n": 12,
    "win_rate": 66.7,
-   "avg_r": 0.664
+   "avg_r": 1.19
   }
  },
  "by_side": {
   "short": {
-   "n": 9,
+   "n": 12,
    "win_rate": 66.7,
-   "avg_r": 0.664
+   "avg_r": 1.19
   }
  },
  "by_result": {
-  "停損": 3,
-  "移動停損出場": 6
+  "停損": 4,
+  "移動停損出場": 8
  },
  "curve": [
   [
@@ -65,8 +65,20 @@
   [
    1794959999999,
    5.978
+  ],
+  [
+   1795276799999,
+   13.144
+  ],
+  [
+   1795276799999,
+   14.798
+  ],
+  [
+   1795276799999,
+   14.284
   ]
  ],
  "reliable": false,
- "updated": 1795264085651
+ "updated": 1795296917244
 }
