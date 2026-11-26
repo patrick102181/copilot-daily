@@ -555,7 +555,7 @@
    "risk": 3.6512701086034185,
    "hi": 71.07,
    "lo": 65.84,
-   "last_t": 1795636800000,
+   "last_t": 1795651200000,
    "risk_pct": 5.41,
    "risk_usdt": 54.05,
    "bias": "空",
@@ -565,11 +565,16 @@
     "初始停損＝進場 ＋ 2 倍 ATR",
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
-   "status": "open",
-   "bars_held": 3,
+   "status": "closed",
+   "bars_held": 4,
    "last_price": 70.47,
    "unrealized_r": -0.8,
-   "locked_r": -1.0
+   "locked_r": -1.0,
+   "result": "停損",
+   "r_gross": -1.0,
+   "r": -1.037,
+   "closed_time": 1795665599999,
+   "exit_price": 71.20127010860341
   },
   {
    "id": "XRPUSDT-1795593600000",
@@ -584,7 +589,7 @@
    "risk": 0.045708252236532264,
    "hi": 0.9489,
    "lo": 0.8889,
-   "last_t": 1795636800000,
+   "last_t": 1795651200000,
    "risk_pct": 5.03,
    "risk_usdt": 50.28,
    "bias": "空",
@@ -594,11 +599,16 @@
     "初始停損＝進場 ＋ 2 倍 ATR",
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
-   "status": "open",
-   "bars_held": 3,
+   "status": "closed",
+   "bars_held": 4,
    "last_price": 0.9379,
    "unrealized_r": -0.632,
-   "locked_r": -1.0
+   "locked_r": -1.0,
+   "result": "停損",
+   "r_gross": -1.0,
+   "r": -1.04,
+   "closed_time": 1795665599999,
+   "exit_price": 0.9547082522365323
   },
   {
    "id": "DOGEUSDT-1795593600000",
@@ -645,7 +655,7 @@
    "risk": 0.007078660368346522,
    "hi": 0.1133,
    "lo": 0.1046,
-   "last_t": 1795636800000,
+   "last_t": 1795651200000,
    "risk_pct": 6.58,
    "risk_usdt": 65.85,
    "bias": "空",
@@ -655,11 +665,16 @@
     "初始停損＝進場 ＋ 2 倍 ATR",
     "出場：3 倍 ATR 移動停損，不設止盈，讓行情自己跑"
    ],
-   "status": "open",
-   "bars_held": 3,
+   "status": "closed",
+   "bars_held": 4,
    "last_price": 0.1132,
    "unrealized_r": -0.805,
-   "locked_r": -1.0
+   "locked_r": -1.0,
+   "result": "停損",
+   "r_gross": -1.0,
+   "r": -1.03,
+   "closed_time": 1795665599999,
+   "exit_price": 0.11457866036834652
   }
  ]
 }
